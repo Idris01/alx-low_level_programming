@@ -13,10 +13,10 @@
 int main(void)
 {
 	int n;
+	char *info;
 
 	srand(time(0));
 	n = rand() - RAND_MAX / 2;
-	char *info;
 
 	if (n == 0)
 		info = "is zero";
