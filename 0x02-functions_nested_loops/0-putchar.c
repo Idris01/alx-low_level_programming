@@ -8,8 +8,9 @@
 int main(void)
 {
 	char value[] = "_putchar\n";
+	int i;
 
-	for (int i = 0; i < strlen(value); i++)
+	for (i = 0; i < strlen(value); i++)
 	{
 		_putchar(*(value + i));
 	}
