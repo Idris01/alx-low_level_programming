@@ -18,4 +18,5 @@ int main(void)
 		counter++;
 	}
 	printf("%d\n", total);
+	return (0);
 }
