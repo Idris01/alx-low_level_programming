@@ -13,7 +13,7 @@ int _atoi(char *s)
 {
 	int value, neg = 0, size = strlen(s) - 1;
 	int start, end, iterator = 0, copySize = 0;
-	char *copy;
+	char *copy, *negs;
 
 	while (iterator < size)
 	{
@@ -34,12 +34,15 @@ int _atoi(char *s)
 	}
 	if (isdigit(*(s + iterator)))
 	{
-		copySize = (size - start) + 1;
-		copy = malloc(copySize * sizeof(char));
-		strncpy(copy, (s + start), copySize);
-		value = atoi(copy);
 		if (neg % 2 == 1)
-			value = -value;
+		{
+			copySize = (size - start) + 2;
+			copy = malloc(copySize * sizeof(char));
+		strncpy(copy, (s + start), copySize);
+
+		if (neg % 2 == 1)
+			negs = malloc((1 + copySize) * sizeof(char));
+			
 		return (value);
 	}
 	end = iterator - 1;
