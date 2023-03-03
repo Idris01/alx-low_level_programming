@@ -1,7 +1,5 @@
 #include <ctype.h>
 
-void encode(char *str);
-
 /**
  * leet - Encode a given string by replacing upper
  * and lowercase a, e, t and l respectively with
@@ -13,37 +11,23 @@ void encode(char *str);
 
 char *leet(char *str)
 {
-	char c;
+	char c, d;
+	char *code = "43710";
+	char *val = "aetlo";
 	int loc = 0;
+	int loc2;
 
 	while ((c = *(str + loc)) != '\0')
 	{
-		if (isalpha(c))
-			encode((str + loc));
+		loc2 = 0;
+		while ((d = *(val + loc2)) != '\0')
+		{
+			if (d == tolower(c))
+				*(str + loc) = *(code + loc2);
+			loc2++;
+		}
 		loc++;
 	}
 	return (str);
 }
 
-/**
- * encode - Encode a given character
- * @str: character to encode
- *
- * Return: void
- */
-
-void encode(char *str)
-{
-	char c = *str;
-
-	if (c == 'a' || c == 'A')
-		*str = '4';
-	else if (c == 'e' || c == 'E')
-		*str = '3';
-	else if (c == 'o' || c == 'O')
-		*str = '0';
-	else if (c == 't' || c == 'T')
-		*str  = '7';
-	else if (c == 'l' || c == 'L')
-		*str = '1';
-}
