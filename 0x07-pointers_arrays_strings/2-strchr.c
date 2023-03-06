@@ -21,5 +21,7 @@ char *_strchr(char *s, char c)
 			return (s + locator);
 		locator++;
 	}
+	if (c == *(s + locator))
+		return (s + locator);
 	return (NULL);
 }
