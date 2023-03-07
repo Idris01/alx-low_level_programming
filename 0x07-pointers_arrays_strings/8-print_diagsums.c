@@ -23,5 +23,5 @@ void print_diagsums(int *a, int size)
 		diag1 += *(a + loc1);
 		diag2 += *(a + loc2);
 	}
-	printf("%d %d\n", diag1, diag2);
+	printf("%d, %d\n", diag1, diag2);
 }
