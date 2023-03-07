@@ -14,7 +14,6 @@ void print_diagsums(int *a, int size)
 	int diag1 = 0, diag2 = 0;
 	int loc1, loc2;
 	int row_cnt = 0;
-	int i = sizeof(int);
 
 	for (; row_cnt < size; row_cnt++)
 	{
