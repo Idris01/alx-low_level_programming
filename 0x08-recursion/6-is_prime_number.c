@@ -23,8 +23,6 @@ int is_prime_number(int n)
 
 int is_prime(int n, int prime)
 {
-	int ans;
-
 	if (prime > 9)
 		return (1);
 	if (n == 1  || n == -1 || n % prime == 0)
