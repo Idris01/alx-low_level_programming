@@ -16,31 +16,17 @@ char *str_concat(char *s1, char *s2)
 	int size = 0, count = 0;
 	char *new_str;
 
-	if (s1 == NULL)
-		size += 1;
-	else
+	if (s1 != NULL)
 		size += strlen(s1);
-	if (s2 == NULL)
-		size += 1;
-	else
+	if (s2 != NULL)
 		size += strlen(s2);
 	size += 1; /*Add  Excess space for Null character */
 	new_str = (char *) malloc(sizeof(char) * size);
 	if (new_str == NULL)
 		return (NULL);
-	if (s1 == NULL)
-	{
-		*(new_str + count) = ' ';
-		count++;
-	}
-	else
+	if (s1 != NULL)
 		count += copy(new_str, s1, count);
-	if (s2 == NULL)
-	{
-		*(new_str + count) = ' ';
-		count++;
-	}
-	else
+	if (s2 != NULL)
 		count += copy(new_str, s2, count);
 
 	*(new_str + count) = '\0';
