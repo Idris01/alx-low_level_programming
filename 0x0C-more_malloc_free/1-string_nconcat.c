@@ -17,7 +17,7 @@ int copy(char *dest, char *src, int d_start, int n);
 
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	int size1, size2; /* size of s1 and s2 */
+	unsigned int size1, size2; /* size of s1 and s2 */
 	char *new_string; /* pointer to new string */
 	int new_size; /* size of new_string */
 	int pos; /* position for traversing new_string */
