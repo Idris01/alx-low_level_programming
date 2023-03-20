@@ -1,7 +1,7 @@
 /**
  * struct dog - Define a structure named dog
  * @name: pointer to string
- * @age: integer
+ * @age: float 
  * @owner: pointer to string
  */
 
