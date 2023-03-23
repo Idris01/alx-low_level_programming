@@ -18,7 +18,6 @@ void print_all(const char * const format, ...)
 	char type, *str_val;
 
 	va_start(items, format);
-
 	i = 0;
 	while (i < size)
 	{
@@ -44,14 +43,14 @@ void print_all(const char * const format, ...)
 				break;
 			default:
 				addsep = 0;
-				break;
 		}
-		if (i < size - 1 && addsep)
+		while (i < (size - 1) && addsep)
+		{
 			printf(", ");
+			break;
+		}
 		i++;
 	}
 	printf("\n");
 	va_end(items);
 }
-
-
