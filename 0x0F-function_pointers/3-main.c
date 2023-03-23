@@ -1,5 +1,6 @@
 #include "3-calc.h"
 #include <stdlib.h>
+#include <string.h>
 #include <stdio.h>
 
 /**
@@ -20,6 +21,11 @@ int main(int argc, char **argv)
 	{
 		printf("Error\n");
 		exit(98);
+	}
+	if (strlen(*(argv + 2)) != 1)
+	{
+		printf("Error\n");
+		exit(99);
 	}
 	operator = **(argv + 2);
 	switch (operator)
