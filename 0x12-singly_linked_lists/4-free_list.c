@@ -15,7 +15,10 @@ void free_list(list_t *head)
 	list_t *memo;
 
 	if (head == NULL)
+	{
+		free(head);
 		exit(0);
+	}
 
 	while (head->next != NULL)
 	{
