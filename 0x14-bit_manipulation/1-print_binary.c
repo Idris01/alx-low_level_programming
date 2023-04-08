@@ -10,7 +10,7 @@
 
 void print_binary(unsigned long int n)
 {
-	const unsigned long int BITS = sizeof(n) * 8;
+	const unsigned long int BITS = sizeof(n) * 4;
 	unsigned long int mask = 1 << (BITS - 1);
 	int has_one = 0; /* flag to remove leading zeros */
 	int is_one;
@@ -30,6 +30,4 @@ void print_binary(unsigned long int n)
 	}
 	if (!has_one) /* the number is zero so print only one 0 */
 		_putchar('0');
-
-	_putchar('\n');
 }
