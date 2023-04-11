@@ -28,7 +28,7 @@ int main(int ac, char **av)
 	char *error100 = "Error: Can't close fd %d\n";
 
 	if (ac < 3)
-		do_exit("%s\n", 97, "Usage: cp file_from file_to\n", 0);
+		do_exit("%s\n", 97, "Usage: cp file_from file_to", 0);
 	from_fd = open(av[1], O_RDONLY);
 	if (from_fd < 0)
 		do_exit(error98, 98, av[1], 0);
