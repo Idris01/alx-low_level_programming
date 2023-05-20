@@ -27,6 +27,7 @@ void free_dlistint(dlistint_t *head);
 dlistint_t *get_dnodeint_at_index(dlistint_t *head, unsigned int index);
 int sum_dlistint(dlistint_t *head);
 dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n);
-void place_at_back(dlistint_t *node, dlistint_t *new);
+dlistint_t *place_at_back(dlistint_t *node, dlistint_t *new);
+void initialize(dlistint_t *new, int n);
 
 #endif

@@ -19,18 +19,14 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 	new = malloc(sizeof(dlistint_t));
 	if (new == NULL)
 		return (NULL);
-	new->n = n;
-	new->prev = NULL;
-	new->next = NULL;
-	if (temp == NULL)
+	initialize(new, n);
+	if (temp == NULL && idx == 0)
 	{
-		if (idx == 0)
-		{
-			*h = new;
-			return (new);
-		}
-		return (NULL);
+		*h = new;
+		return (new);
 	}
+	if (temp == NULL)
+		return (NULL);
 	for (; temp->next != NULL; cnt++, temp = temp->next)
 	{
 		if (cnt == idx)
@@ -45,13 +41,18 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
 			return (new);
 		}
 	}
-	if (cnt == idx)
+	switch (cnt - idx)
 	{
-		place_at_back(temp, new);
-		return (new);
+		case (0):
+			return (place_at_back(temp, new));
+		case (-1):
+			new->prev = temp;
+			temp->next = new;
+			return (new);
+		default:
+			free(new);
+			return (NULL);
 	}
-	free(new);
-	return (NULL);
 }
 
 /**
@@ -61,14 +62,30 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **h, unsigned int idx, int n)
  * @new: pointer to new node to take place of old
  * node
  *
- * Return: always void
+ * Return: pointer to new node
  */
 
-void place_at_back(dlistint_t *node, dlistint_t *new)
+dlistint_t *place_at_back(dlistint_t *node, dlistint_t *new)
 {
 	new->prev = node->prev;
 	new->next = node;
 	node->prev = new;
 	node = new->prev;
 	node->next = new;
+
+	return (new);
+}
+
+/**
+ * initialize - initalize node pointer with value n
+ * @new: pointer to new node of doubly linked list
+ * @n: value of the new node
+ *
+ * Return: always void
+ */
+void initialize(dlistint_t *new, int n)
+{
+	new->n = n;
+	new->prev = NULL;
+	new->next = NULL;
 }
