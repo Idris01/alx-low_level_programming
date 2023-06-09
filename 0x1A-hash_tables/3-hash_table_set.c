@@ -20,8 +20,8 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 	if (new == NULL)
 		return (0);
 
-	new->key = malloc(sizeof(key));
-	new->value = malloc(sizeof(value));
+	new->key = strdup(key);
+	new->value = strdup(value);
 
 	if (new->key == NULL || new->value == NULL)
 		return (0);
