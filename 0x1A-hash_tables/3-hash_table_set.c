@@ -52,8 +52,15 @@ int is_empty(const char *key)
 
 	while ((c = *key++))
 	{
-		if (isalpha(c))
-			return (0);
+		switch (c)
+		{
+			case ' ':
+			case '\n':
+			case '\t':
+				break;
+			default:
+				return (0);
+		}
 	}
 	return (1);
 }
