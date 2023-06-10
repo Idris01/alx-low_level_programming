@@ -9,7 +9,7 @@
  */
 int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 {
-	hash_node_t *new;
+	hash_node_t *new, *temp;
 	size_t loc;
 
 	if (ht == NULL || key == NULL || value == NULL || is_empty(key))
@@ -33,8 +33,20 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 		(ht->array)[loc] = new;
 	else
 	{
-		new->next = (ht->array)[loc];
-		(ht->array)[loc] = new;
+		temp = (ht->array)[loc];
+		if (strcmp(temp->key, new->key) == 0)
+		{
+			free(temp->value);
+			temp->value = strdup(new->value);
+			free(new->key);
+			free(new->value);
+			free(new);
+		}
+		else
+		{
+			new->next = (ht->array)[loc];
+			(ht->array)[loc] = new;
+		}
 	}
 	return (1);
 }
