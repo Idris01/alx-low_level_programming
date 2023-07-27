@@ -39,7 +39,11 @@ def island_perimeter(grid):
             return
 
         explored.append(point_str)
-        for i, j in [(x-1, y), (x+1, y), (x, y-1), (x, y+1)]:
+        for i, j in [
+                (x-1, y), (x+1, y),
+                (x, y-1), (x, y+1),
+                (x-1, y-1), (x+1, y-1),
+                (x-1, y+1), (x+1, y+1)]:
             if grid[i][j] == 0:
                 boundry.add("c{},r{}".format(i, j))
         _do_search((x, y+1), grid)
@@ -54,6 +58,20 @@ def island_perimeter(grid):
             break
     if point is None:
         return 0
+
+    # check that there is actually a lake
+    if any(item == 1 for item in grid[0]):
+        return 0
+    if any(item == 1 for item in grid[-1]):
+        return 0
+    transposed = []
+    for item in zip(*grid):
+        transposed.append(list(item))
+    if any(item == 1 for item in transposed[0]):
+        return 0
+    if any(item == 1 for item in transposed[-1]):
+        return 0
+
     _do_search(point, grid)
     size = len(boundry)
-    return (size if size % 2 == 0 else size + 1)
+    return size - 4
