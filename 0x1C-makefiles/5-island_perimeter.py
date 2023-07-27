@@ -1,4 +1,10 @@
 #!/usr/bin/python3
+""" Island Perimeter module
+
+This module define a single function that finds the perimeter of
+an island
+"""
+
 
 def island_perimeter(grid):
     """Finds Perimeter of a grid
