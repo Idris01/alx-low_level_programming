@@ -19,7 +19,7 @@ int binary_search(int *array, size_t size, int value)
 	while (end >= start)
 	{
 		printf("Searching in array: ");
-		print_array(array, start, end);
+		print_array_binary(array, start, end);
 		if (array[mid] == value)
 			return (mid);
 		else if (array[mid] < value)
